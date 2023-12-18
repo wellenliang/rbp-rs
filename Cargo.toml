@@ -2,6 +2,8 @@
 members = [
     "crates/rbp-core",
     "crates/rbp-messaging/rbp-messaging-types",
+    "crates/rbp-messaging/rbp-messaging-pulsar",
+    "crates/rbp-ddd",
 ]
 resolver = "2"
 
