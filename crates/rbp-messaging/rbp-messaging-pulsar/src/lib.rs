@@ -1,14 +1,12 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+use std::collections::HashMap;
+
+use pulsar::{Executor, Pulsar, Producer};
+
+pub mod error;
+
+pub struct PulsarStreamChannel<Exe: Executor> {
+    pub client: Pulsar<Exe>,
+    pub producers: HashMap<String, Producer<Exe>>
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
