@@ -11,3 +11,8 @@ pub trait NamedAggregate {
     /// return the name of aggregate
     fn aggregate_name(&self) -> &'static str;
 }
+
+
+pub trait Named {
+    fn name(&self) -> &str;
+}

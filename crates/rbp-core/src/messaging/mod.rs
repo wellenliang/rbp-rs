@@ -26,14 +26,14 @@ pub trait Message: Sized {
 /// Message envelope
 /// 消息信封
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct MessageEnvelope<T> {
+pub struct MessageEnvelope {
     metadata: Metadata,
-    payload: T,
+    payload: Vec<u8>,
     attributes: HashMap<String, String>,
 }
 
-impl<T> MessageEnvelope<T> {
-    pub fn new(payload: T) -> Self {
+impl MessageEnvelope  {
+    pub fn new(payload: Vec<u8>) -> Self {
         Self {
             metadata: Metadata::new(),
             payload,
@@ -57,3 +57,4 @@ impl<T> MessageEnvelope<T> {
         self.attributes.remove(&key);
     }
 }
+
