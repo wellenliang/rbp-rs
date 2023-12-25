@@ -4,5 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+runtime-tokio = ["tokio"]
+runtime-async-std = ["async-std"]
 
 [dependencies]
+futures = { workspace = true}
+tokio = { workspace = true, optional = true, features = ["time", "sync", "rt"] }
+async-std = { workspace = true, optional = true }
