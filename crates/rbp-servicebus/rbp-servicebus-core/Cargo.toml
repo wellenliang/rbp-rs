@@ -1,14 +1,10 @@
 [package]
-name = "rbp-core"
+name = "rbp-servicebus-core"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[features]
-
-
 
 [dependencies]
-async-trait = { workspace = true }
-bytes = { workspace = true }
-serde = { workspace = true, features = ["derive"] }
+serde = { workspace = true }
+rbp-serialization = { workspace = true, features = ["serialization-json"] }

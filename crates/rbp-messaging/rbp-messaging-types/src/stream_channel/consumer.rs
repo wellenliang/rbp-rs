@@ -1,6 +1,6 @@
 use rbp_core::{identifier::Identifier, named::Named};
 
-pub trait SingleTopicStreamConsumer: Identifier + Named {
+pub trait StreamConsumer: Identifier + Named {
     type Error: std::error::Error;
 
 

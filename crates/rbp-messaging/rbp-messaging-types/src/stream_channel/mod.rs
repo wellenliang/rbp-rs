@@ -38,7 +38,7 @@ pub trait StreamChannel: Identifier + Named + Sized {
     type StreamProducer: StreamProducer;
     type StreamProducerOptions;
 
-    type StreamConsumer;
+    type StreamConsumer: StreamConsumer;
     type StreamConsumerOptions;
 
     async fn connect(

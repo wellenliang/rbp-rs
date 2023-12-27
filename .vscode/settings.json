@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./crates/rbp-components/rbp-serialization/Cargo.toml"
+    ]
+}
