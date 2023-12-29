@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 serde = { workspace = true }
-rbp-serialization = { workspace = true, features = ["serialization-json"] }
+thiserror = { workspace = true }
+rbp-serialization = { workspace = true, features = ["full"] }

@@ -1,6 +1,8 @@
-use std::marker::PhantomData;
+use std::{marker::PhantomData, fmt::Debug};
 
 use serde::{Deserialize, Serialize, de::DeserializeOwned};
+
+use crate::SerializationError;
 
 use super::Serialization;
 
@@ -22,17 +24,15 @@ where
 
 impl<T> Serialization<T> for JsonSerialization<T>
 where
-    T: Serialize + DeserializeOwned + Send + Sync,
+    T: Serialize + DeserializeOwned + Send + Sync + Debug,
     for<'d> T: Deserialize<'d>,
 {
-    type Error = serde_json::Error;
-
-    fn serialize(&self, value: T) -> Result<Vec<u8>, Self::Error> {
-        serde_json::to_vec(&value)
+    fn serialize(&self, value: T) -> Result<Vec<u8>, SerializationError> {
+        serde_json::to_vec(&value).map_err(SerializationError::JsonError)
     }
 
-    fn deserialize(&self, data: Vec<u8>) -> Result<T, Self::Error> {
-        serde_json::from_slice(&data)
+    fn deserialize(&self, data: Vec<u8>) -> Result<T, SerializationError> {
+        serde_json::from_slice(&data).map_err(SerializationError::JsonError)
     }
 
     fn content_type(&self) -> &str {
